@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>v-model绑定数据源</title>
+		<script type="text/javascript" src="../assests/js/vue.js"></script>
+	</head>
+	<body>
+		<h1>v-model绑定数据源</h1>
+		<hr>
+		<div id="app">
+			<p>原始文本信息：{{message}}</p>
+			<h3>文本框</h3>
+			<p>v-model：<input type="text" v-model="message"></p>
+			<p>v-model.lazy：<input type="text" v-model.lazy="message"></p>
+			<p>v-model.number：<input type="text" v-model.number="message"></p>
+			<p>v-model.trim：<input type="text" v-model.trim="message"></p>
+			<hr>
+			<h3>文本域</h3>
+			<p><textarea v-model="message" cols="30" rows="10"></textarea></p>
+			<hr>
+			<h3>多选框绑定一个值</h3>
+			<p><input type="checkbox" v-model="isTrue"><span>{{isTrue}}</span></p>
+		</div>
+		<script type="text/javascript">
+			var app = new Vue({
+				el: "#app",
+				data: {
+					message: "hello world!",
+					isTrue: true
+				}
+			});
+			// v-model实现双向数据绑定。
+			// lazy:
+			// 		当v-model.lazy加上lazy之后，文本框内的值改变之后并不会立即引发原始文本信息的变化，
+			// 		当失去v-model.lazy失去所在dom元素的焦点，原始文本信息才会产生变化
+			// number:
+			// 		当v-model.number加上number之后，文本框内的值只有当是number类型的值时，原始文本信息才会发生改变。
+			// 		并且，当失去v-model.number所在dom元素的焦点时，文本框内的值也只会保留Number类型的值
+			// trim:
+			// 		当v-model.trim加上trim之后，文本框内的值出现空格之后，原始文本信息并不会出现空格。
+			// 		并且，当失去v-model.trim所在dom元素的焦点时，文本框内的值也会去除空格。
+		</script>
+	</body>
+</html>

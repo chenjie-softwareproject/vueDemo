@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>v-if & v-else & v-show</title>
+		<script type="text/javascript" src="../assests/js/vue.js"></script>
+	</head>
+	<body>
+		<h1>v-if & v-else & v-show</h1>
+		<hr>
+		<div id="app">
+			<div v-if="isLogin">你好，欢迎进入我的世界！</div>
+			<div v-else>请进行登录操作</div>
+			<div v-show="isShow">我显示了</div>
+		</div>
+		<script type="text/javascript">
+			var app = new Vue({
+				el: "#app",	/*el要加引号*/
+				data: {
+					isLogin: false,
+					isShow: false
+				}
+			});
+
+			// v-show是对于DOM元素进行css的display显示或者隐藏，当v-show为true时显示，否则则隐藏DOM元素
+			// v-if会在加载前判断v-if的值，如果为true则加载，为false则不加载，减轻服务器的压力
+			// v-else是当v-if的值为false时，显示v-else所在的DOM元素的值
+		</script>
+	</body>
+</html>

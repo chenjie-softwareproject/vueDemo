@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <script type="text/javascript" src="../assests/js/vue.js"></script>
+        <title>V-for 案例</title>
+    </head>
+
+    <body>
+        <h1>v-for指令用法</h1>
+        <hr>
+        <div id="app">
+            <ul>
+                <li v-for="item in sortItems">
+                    {{item}}
+                </li>
+            </ul>
+            <ul>
+                <li v-for="(student,index) in sortStudents">
+                    {{index}}: {{student.name}} - {{student.age}}
+                </li>
+            </ul>
+        </div>
+        <script type="text/javascript">
+            var app = new Vue({
+                el: '#app',
+                data: {
+                    items:[20,23,18,65,32,19,54,7],
+                    students: [
+                        {name:"Bobby",age:20},
+                        {name:"Timmiy",age:19},
+                        {name:"Sara",age:18},
+                        {name:"Jane",age:21},
+                    ]
+                },
+                computed: {
+                    sortItems: function() {
+                        return this.items.sort(sortNumber);
+                    },
+                    sortStudents: function() {
+                        return sortStudent(this.students, "age");
+                    }
+                }
+            });
+            function sortNumber(a,b) {
+                return a - b
+            }
+
+            // 对于年龄进行排序
+            function sortStudent(array, key) {
+                return array.sort(function(a,b) {
+                    var x = a[key];
+                    var y = b[key];
+
+                    if (x < y) {
+                        return -1;
+                    } else if (x > y) {
+                        return 1;
+                    } else {
+                        return 0;
+                    }
+                });
+            }
+        </script>
+    </body>
+
+</html>
